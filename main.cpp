@@ -395,12 +395,12 @@ public:
 
 void welcome() // Welcome Page
 {
-    ifstream fileopen("welcometext.txt"); // Open Welcome text file
+    ifstream fileopen("AnimationFiles/welcometext.txt"); // Open Welcome text file in Animation Folder
     string line;
     while (getline(fileopen, line)) // Read each line from the file then print
         cout << line << endl;
 
-    // after
+    // after display all lines of Welcome.txt file the take any input than move forword
     cout << "Press any key to continue " << endl;
     getch();
     system("cls");
@@ -411,22 +411,22 @@ void welcome_animation() // for show Flight Animation...
 {
 
     // opens all files
-    ifstream f1("a1.txt");
-    ifstream f2("a2.txt");
-    ifstream f3("a3.txt");
-    ifstream f4("a4.txt");
-    ifstream f5_0("a5_0.txt");
-    ifstream f5_1("a5_1.txt");
-    ifstream f5_2("a5_2.txt");
-    ifstream f5_3("a5_3.txt");
-    ifstream f5_4("a5_4.txt");
-    ifstream f5_5("a5_5.txt");
-    ifstream f6("a6.txt");
-    ifstream f7("a7.txt");
-    ifstream f8("a8.txt");
-    ifstream f9("a9.txt");
-    ifstream f10("a10.txt");
-    ifstream f11("a11.txt");
+    ifstream f1("AnimationFiles/a1.txt");
+    ifstream f2("AnimationFiles/a2.txt");
+    ifstream f3("AnimationFiles/a3.txt");
+    ifstream f4("AnimationFiles/a4.txt");
+    ifstream f5_0("AnimationFiles/a5_0.txt");
+    ifstream f5_1("AnimationFiles/a5_1.txt");
+    ifstream f5_2("AnimationFiles/a5_2.txt");
+    ifstream f5_3("AnimationFiles/a5_3.txt");
+    ifstream f5_4("AnimationFiles/a5_4.txt");
+    ifstream f5_5("AnimationFiles/a5_5.txt");
+    ifstream f6("AnimationFiles/a6.txt");
+    ifstream f7("AnimationFiles/a7.txt");
+    ifstream f8("AnimationFiles/a8.txt");
+    ifstream f9("AnimationFiles/a9.txt");
+    ifstream f10("AnimationFiles/a10.txt");
+    ifstream f11("AnimationFiles/a11.txt");
 
     string line;
     //------------------Show Files One By One And Display -------------------------------
@@ -1862,9 +1862,9 @@ void login_menu()
 int main()
 {
     system("cls");
-    // welcome();
-    // welcome_animation();
-    login_menu();
+    welcome();
+    welcome_animation();
+    // login_menu();
     // My_Bookings();
 
     return 0;
