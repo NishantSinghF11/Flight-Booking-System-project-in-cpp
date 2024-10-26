@@ -1549,8 +1549,8 @@ void My_Bookings(int dis = 0)
     file.close();
     if (!dis)
     {
-        cout << "\n\nPress any key to continue " << endl;
-        db
+        cout << "\n\nPress any key to continue " << endl; 
+        cout << "\n\nPress any key to continue " << endl; 
         getch();
         system("cls");
         return;
