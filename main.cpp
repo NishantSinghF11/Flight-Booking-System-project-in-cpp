@@ -201,11 +201,22 @@ public:
 
     void display_pass() const
     {
-        cout << "Name: " << name << ", Surname: " << surname << ", Passport No: " << passport_number
+        cout << "Name: " << name << " " << surname << ", Passport No: " << passport_number
              << ", Ticket No: " << ticket_number
-             << ", Seat No: " << seat_number << ", Flight Class: " << flight_class
-             << ", Age: " << age << ", Gender: " << (gender == 1 ? "Male" : "Female")
-             << ", special_fare: " << (is_special_fare == 1 ? "Yes" : "No") << endl;
+             << ", Seat No: " << seat_number << ", Flight Class: ";
+             if (flight_class == 1) cout << "Business Class";
+             else if(flight_class == 2) cout << "First Class";
+             else if(flight_class == 2) cout << "Economy Class";
+             else cout << "Premium Economy";
+
+             cout << ", Age: " << age << ", Gender: " << (gender == 1 ? "Male" : "Female") << ", special_fare: ";
+
+             if(is_special_fare == 2) cout << "Student";
+             else if(is_special_fare == 3) cout << "Senior Citizen";
+             else if(is_special_fare == 4) cout << "Armed Forces";
+             else if(is_special_fare == 5) cout << "Doctor and Nurses";
+             else cout << "Regular";
+             cout<<endl; 
     }
 
     int get_seat_no()
@@ -537,6 +548,14 @@ void print_line(string space, char start, char mid, char end, int length, string
     cout << end << end_endl;
 }
 
+void Exit_msg(){
+        system("cls");
+        cout << "\n\n\n\n\n\n\t\t\t\033[1;47;35m                                                    \033[0m\t\t\n";
+        cout << "\t\t\t\033[1;47;35m --------------  THANKYOU FOR VISITING  ----------- \033[0m\t\t\n";
+        cout << "\t\t\t\033[1;47;35m                                 ~ nishant Airlines \033[0m\t\t\n\n\n\n\n\n\n";
+        exit(0);
+}
+
 void login() //  User login function
 {
     string username, password;
@@ -658,9 +677,10 @@ void Display_All_Flight(int conti = 0)
     {
         Flight f1;
         while (infile.read(reinterpret_cast<char *>(&f1), sizeof(f1)))
-        {
+        {   
+            cout << "\n";
             f1.display_flight();
-            cout << "\n\n";
+            cout << "\n";
         }
         infile.close();
 
@@ -718,8 +738,8 @@ void Update_flight_Detail()
             while (1)
             {
                 cout << "\nWhich of the following you Update ?\n";
-                cout << "1. Add new Source Place\n";
-                cout << "2. Add new Destination Place\n";
+                cout << "1. Update Source Place\n";
+                cout << "2. Update Destination Place\n";
                 cout << "3. Update Departure Time\n";
                 cout << "4. Update Arrival Time\n";
                 cout << "5. Update Flight Fare\n";
@@ -839,61 +859,67 @@ void Update_flight_Detail()
 
 void admin_menu()
 {
-
-    cout << "\n   \xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\n";
+     
+    print_line("\n   ",'\xcd','\xcd','\xcd',43);
     cout << "\t    AIRLINE RESERVATION SYSTEM\n";
-    cout << "   \xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\n\n";
+    print_line("   ",'\xcd','\xcd','\xcd',43,"\n\n");
 
-    cout << "   \xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd Administrator Authority \xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\n\n";
+    print_line("   ",'\xcd','\xcd','\xcd',13," "); cout<<"Administrator Authority";  print_line(" ",'\xcd','\xcd','\xcd',14,"\n\n");
     cout << "\t\t\t\x1B[33m   Admin: " << administrator_user << "\033[0m\n";
 
-    cout << "\t \xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd \n";
+    print_line("\t ",'\xcd','\xcd','\xcd',30);
     cout << "\t 1. Add New Flight\n";
-    cout << "\t \xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd \n";
+    print_line("\t ",'\xcd','\xcd','\xcd',30);
     cout << "\t 2. Display All Flight\n ";
-    cout << "\t \xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd \n";
+    print_line("\t ",'\xcd','\xcd','\xcd',30);
     cout << "\t 3. Update flight Detail\n";
-    cout << "\t \xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd \n";
+    print_line("\t ",'\xcd','\xcd','\xcd',30);
     cout << "\t 4. Add Announcement \n";
-    cout << "\t \xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd \n";
-    cout << "\t 5. Exit \n";
-    cout << "\t \xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd \n";
-    cout << "\n   \xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\n";
+    print_line("\t ",'\xcd','\xcd','\xcd',30);
+    cout << "\t 5. Log Out \n"; 
+    print_line("\t ",'\xcd','\xcd','\xcd',30);
+    cout << "\t 6. Exit \n"; 
+    print_line("\t ",'\xcd','\xcd','\xcd',30);
+
+    print_line("\n   ",'\xcd','\xcd','\xcd',43);
+    
+    
     cout << "   Option : ";
     int option;
     cin >> option;
 
-    if (option == 1)
+    if (option == 1)//Add New Flight
     {
         Add_New_Flight();
         admin_menu();
     }
-    else if (option == 2)
+    else if (option == 2) // Display All Flight
     {
         Display_All_Flight();
         admin_menu();
     }
-    else if (option == 3)
+    else if (option == 3) // Update flight Detail
     {
         Update_flight_Detail();
         admin_menu();
     }
-    else if (option == 4)
-    {
-        //  login_status = false;
-        //  cout<<"\n\t\x1B[32m--Logout Successfull--\033[0m\t\t\n";
+    else if (option == 4) // Add Announcement
+    { 
         Sleep(2000);
         system("cls");
-        //  login_menu();
+        // Add_Announcement();
         admin_menu();
     }
-    else if (option == 5)
-    { // Exit
+    else if (option == 5)//Log Out 
+    {  
+        cout<<"\n\t\x1B[32m-- Logout Successfull --\033[0m\t\t\n";
+        Sleep(2000);
         system("cls");
-        cout << "\n\n\n\n\n\n\t\t\t\033[1;47;35m                                                  \033[0m\t\t\n";
-        cout << "\t\t\t\033[1;47;35m--------------  THANKYOU FOR VISITING  -----------\033[0m\t\t\n";
-        cout << "\t\t\t\033[1;47;35m                           ~nishant_ujjwal airline\033[0m\t\t\n\n\n\n\n\n\n";
-        exit(0);
+        login_menu();
+    }
+    else if (option == 6)// Exit
+    { 
+        Exit_msg();
     }
     else
     {
@@ -1060,9 +1086,10 @@ void Available_flight(string from, string to, int day, int month, int year, int 
                     total_fare_perPerson = f1.get_price();
                 }
 
-                cout << "\t" << char(218) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(191) << "\n";
+                print_line("\t",char(218), char(196), char(191), 98);
                 cout << flight_count << ".\t" << char(179) << "   " << f1.get_flight_number() << "          " << f1.get_flight_name() << "       [\x1B[36m" << from << "\033[0m] " << f1.get_departure_time() << "\x1B[35m     -- " << diffHours << "hr" << diffMinutes << "min --     \033[0m" << f1.get_arrival_time() << " [\x1B[36m" << to << "\033[0m]   \x1B[32m" << total_fare_perPerson << "/-\033[0m \x1B[33m    BOOK NOW\033[0m\n";
-                cout << "\t" << char(192) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(217) << "\n";
+                print_line("\t",char(192), char(196), char(217), 98);
+                
                 flight_count++;
             }
         }
@@ -1142,10 +1169,11 @@ void Available_flight(string from, string to, int day, int month, int year, int 
                 cout << "\n\t\t";
             }
         }
-        cout << "\n----------------------------------------------------------------------------------------------------------\n";
+        
+        print_line("\n",'-', '-', '-', 104);
         cout << "\n  \x1B[32m" << char(254) << " \033[0m Available Seat" << "\t\t Total Seats: \x1B[33m" << t_seat << "\033[0m\n";
         cout << "  \x1B[31m" << char(254) << " \033[0m Seat Full " << "\t\t\t Available Seats: \x1B[33m" << curr_seat << "\033[0m\n\n";
-        cout << "----------------------------------------------------------------------------------------------------------\n\n";
+        print_line("",'-', '-', '-', 104,"\n\n");
 
         while (1)
         {
@@ -1305,13 +1333,14 @@ void Available_flight(string from, string to, int day, int month, int year, int 
 
         //-----------------------------------------------------------------------
         cout << "\n\t\t\t      --------------------- \033[1;47;35m Your Booked Tickets \033[0m ---------------------\n";
-
-        cout << "\n\n\t" << char(218) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(191) << "\n";
+        print_line("\n\n\t",char(218), char(196), char(191), 104);
+        // cout << "\n\n\t" << char(218) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(191) << "\n";
         cout << "\t|                               From \x1B[31m" << get_departure << "\033[0m to \x1B[31m" << get_arrival << "\033[0m on \x1B[33m" << date << "  " << get_flight_time << "                          \033[0m\t |\n";
         cout << "\t|" << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << "|\n";
         cout << "\t|  Flight No : \x1B[36m" << booked_flight_no << "\033[0m                                 Flight Class : \x1B[35m" << f_class << "\033[0m    Trip : \x1B[35m" << ((trip == 1) ? "One Way   " : "Round Trip") << "\033[0m       |\n";
         cout << "\t|  Flight Name : \x1B[36m" << booked_flight_name << "\033[0m                            Travellers : \x1B[32m" << pass.size() << "\033[0m" << " \t         Flight Fare : \x1B[32m" << fare << "/-\033[0m    |\n";
-        cout << "\t|--------------------------------------------------------------------------------------------------------|\n";
+        // cout << "\t|--------------------------------------------------------------------------------------------------------|\n";
+        print_line("\t",'|', '-', '|', 104);
         cout << "\t| Passengers Name     |     Ticket No.     |    Seat No.    |   PassPort NO.    |     Gender  |   Age    |\n";
         cout << "\t|                                                                                                        |\n";
         for (int i = 0; i < pass.size(); i++)
@@ -1329,11 +1358,13 @@ void Available_flight(string from, string to, int day, int month, int year, int 
         else
             discount = 0;
 
-        cout << "\t|--------------------------------------------------------------------------------------------------------|\n";
+        // cout << "\t|--------------------------------------------------------------------------------------------------------|\n";
+        print_line("\t",'|', '-', '|', 104);
         cout << "\t|                                                           Fare of (" << pass.size() << " Travellers) : \x1B[31m" << fare * pass.size() << "/-\033[0m              |\n";
         cout << "\t|                                                                        Discount  : \x1B[31m" << discount << "/-\033[0m               |\n";
         cout << "\t|                                                              Total Payable Amount: \x1B[32m" << fare - discount << "/-\033[0m              |\n";
-        cout << "\t" << char(192) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(217) << "\n";
+        // cout << "\t" << char(192) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(217) << "\n";
+        print_line("\t",char(192), char(196), char(217), 104);
 
         cout << "\n\nPress any key to continue " << endl;
         getch();
@@ -1355,9 +1386,11 @@ void Book_Flight_Ticket()
     cin.ignore();
     string departure, arrival;
     cout << "Enter the Departure Place: ";
-    getline(cin, departure);
+    // getline(cin, departure);
+    cin >> departure;
     cout << "Enter the Arrival Place: ";
-    getline(cin, arrival);
+    // getline(cin, arrival);
+    cin >> arrival;
     cout << "Enter the Departure Date (DD/MM/YYYY): ";
     int day, month, year;
     char c;
@@ -1469,7 +1502,7 @@ void Book_Flight_Ticket()
     main_menu();
 }
 
-void My_Bookings(int dis = 0)
+bool My_Bookings(int dis = 0)
 {
     if (!dis)
     {
@@ -1482,12 +1515,14 @@ void My_Bookings(int dis = 0)
     if (!file)
     {
         cerr << " Error opening file! " << endl;
-        return;
+        Sleep(2000);
+        return 0;
     }
 
     bool ticket_found = false;
-
-    while (!file.eof())
+    
+    
+    while (file.peek() != EOF)
     {
         R1.readfromfile_rev(file);
         ticket_found = true;
@@ -1504,16 +1539,15 @@ void My_Bookings(int dis = 0)
         for (auto &x : get_arrival)
             x = toupper(x);
 
-        // cout << "\n\n\t";
+
         print_line("\n\n\t",char(218), char(196), char(191), 104);
-        // cout << "\n\n\t" << char(218) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(191) << "\n";
         cout << "\t|                               From \x1B[31m" << get_departure << "\033[0m to \x1B[31m" << get_arrival << "\033[0m on \x1B[33m" << R1.get_flight_date() << "  " << R1.get_flight_time() << "                          \033[0m\t |\n";
         cout << "\t|" << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << "|\n";
         cout << "\t|  Flight No : \x1B[36m" << R1.get_flight_no() << "\033[0m                                 Flight Class : \x1B[35m" << R1.get_flight_class() << "\033[0m    Trip : \x1B[35m" << ((trip == 1) ? "One Way   " : "Round Trip") << "\033[0m       |\n";
         cout << "\t|  Flight Name : \x1B[36m" << R1.get_flight_name() << "\033[0m                            Travellers : \x1B[32m" << pass_obj.size() << "\033[0m" << " \t         Flight Fare : \x1B[32m" << fare << "/-\033[0m    |\n";
        
         print_line("\t",'|', '-', '|', 104);
-        // cout << "\t|--------------------------------------------------------------------------------------------------------|\n";
+        
         cout << "\t| Passengers Name     |     Ticket No.     |    Seat No.    |   PassPort NO.    |     Gender  |   Age    |\n";
         cout << "\t|                                                                                                        |\n";
         for (int i = 0; i < pass_obj.size(); i++)
@@ -1532,13 +1566,11 @@ void My_Bookings(int dis = 0)
             discount = 0;
             
         print_line("\t",'|', '-', '|', 104);
-        // cout << "\t|--------------------------------------------------------------------------------------------------------|\n";
+        
         cout << "\t|                                                           Fare of (" << pass_obj.size() << " Travellers) : \x1B[31m" << fare * pass_obj.size() << "/-\033[0m              |\n";
         cout << "\t|                                                                        Discount  : \x1B[31m" << discount << "/-\033[0m               |\n";
         cout << "\t|                                                              Total Payable Amount: \x1B[32m" << fare - discount << "/-\033[0m              |\n";
 
-        // cout << "\t" << char(192) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(217) << "\n";
-      
         print_line("\t",char(192), char(196), char(217), 104);
     }
 
@@ -1552,8 +1584,11 @@ void My_Bookings(int dis = 0)
         cout << "\n\nPress any key to continue " << endl;  
         getch();
         system("cls");
-        return;
+        return 0;
+    }else{
+         return ticket_found;
     }
+   
 }
 
 void Cancel_Ticket()
@@ -1565,10 +1600,11 @@ void Cancel_Ticket()
     int choice;
     cout << "Choice : ";
     cin >> choice;
+    bool found_ticket;
     if (choice == 2)
     {
         cout << "\n\n";
-        My_Bookings(1); //"Press any key to continue"  ye nahi puche isliye 1 arg bhaja
+        found_ticket =  My_Bookings(1); //"Press any key to continue"  ye nahi puche isliye 1 arg bhaja
     }
     else if (choice != 2 && choice != 1)
     {
@@ -1577,54 +1613,57 @@ void Cancel_Ticket()
         system("cls");
         return;
     }
-    cout << "\n\nPlease Enter the Flight Number And Date of Reservation (DD:MM:YYYY) You Want to Cencel : \n\n";
-    string flight_number;
-    string date;
-    cout << "Flight Number : ";
-    cin >> flight_number;
-    cout << "Date of Reservation (DD:MM:YYYY) : ";
-    cin >> date;
-    cout << date << " " << flight_number;
-
-    ofstream Temp("Temp.dat", ios::binary | ios::app);
-    ifstream infile("reservation.dat", ios::binary);
-
-    if (!infile.is_open() || !Temp.is_open())
+    if(found_ticket)
     {
-        cerr << "Error opening file." << endl;
-        return;
-    }
+        cout << "\n\nPlease Enter the Flight Number And Date of Reservation (DD:MM:YYYY) You Want to Cencel : \n\n";
+        string flight_number;
+        string date;
+        cout << "Flight Number : ";
+        cin >> flight_number;
+        cout << "Date of Reservation (DD:MM:YYYY) : ";
+        cin >> date;
+        cout << date << " " << flight_number;
 
-    Reservation R1;
-    bool found = false;
+        ofstream Temp("Temp.dat", ios::binary | ios::app);
+        ifstream infile("reservation.dat", ios::binary);
 
-    while (infile.read(reinterpret_cast<char *>(&R1), sizeof(R1)))
-    {
-        if (R1.get_flight_no() == flight_number && R1.get_flight_date() == date)
+        if (!infile.is_open() || !Temp.is_open())
         {
-            found = true;
+            cerr << "Error opening file." << endl;
+            return;
+        }
+
+        Reservation R1;
+        bool found = false;
+
+        while (infile.read(reinterpret_cast<char *>(&R1), sizeof(R1)))
+        {
+            if (R1.get_flight_no() == flight_number && R1.get_flight_date() == date)
+            {
+                found = true;
+            }
+            else
+            {
+                Temp.write(reinterpret_cast<char *>(&R1), sizeof(R1));
+            }
+        }
+
+        Temp.close();
+        infile.close();
+
+        if (found)
+        {
+            remove("reservation.dat");
+            rename("Temp.dat", "reservation.dat");
+            cout << "Reservation with flight number " << flight_number << " And Flight Date " << date << " deleted successfully." << endl;
+            cout << "\n\t\x1B[32m Flight Ticket Cencled Successfully!!\n";
         }
         else
         {
-            Temp.write(reinterpret_cast<char *>(&R1), sizeof(R1));
+            cout << "Reservation with flight number " << flight_number << " And Flight Date " << date << " not found." << endl;
         }
-    }
 
-    Temp.close();
-    infile.close();
-
-    if (found)
-    {
-        remove("reservation.dat");
-        rename("Temp.dat", "reservation.dat");
-        cout << "Reservation with flight number " << flight_number << " And Flight Date " << date << " deleted successfully." << endl;
-        cout << "\n\t\x1B[32m Flight Ticket Cencled Successfully!!\n";
     }
-    else
-    {
-        cout << "Reservation with flight number " << flight_number << " And Flight Date " << date << " not found." << endl;
-    }
-
     cout << "\n\nPress any key to continue " << endl;
     getch();
     system("cls");
@@ -1633,66 +1672,64 @@ void Cancel_Ticket()
 
 void main_menu()
 {
-    cout << "\n   \xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\n";
+    system("cls");
+    print_line("\n   ",'\xcd','\xcd','\xcd',43);
     cout << "\t    AIRLINE RESERVATION SYSTEM\n";
-    cout << "   \xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\n\n";
+    print_line("   ",'\xcd','\xcd','\xcd',43,"\n\n");
 
-    cout << "   \xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd MENU OPTIONS \xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\n\n";
+    print_line("   ",'\xcd','\xcd','\xcd',13," "); cout<<"MENU OPTIONS";  print_line(" ",'\xcd','\xcd','\xcd',14,"\n\n");
     cout << "\t\t\t\x1B[33m   user id: @" << login_user << "\033[0m\n";
 
-    cout << "\t \xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd \n";
+    print_line("\t ",'\xcd','\xcd','\xcd',30);
     cout << "\t 1. Book Flight Ticket/Reservation\n";
-    cout << "\t \xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd \n";
+    print_line("\t ",'\xcd','\xcd','\xcd',30);
     cout << "\t 2. Cancel Ticket/Reservation\n ";
-    cout << "\t \xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd \n";
+    print_line("\t ",'\xcd','\xcd','\xcd',30);
     cout << "\t 3. My Bookings \n";
-    cout << "\t \xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd \n";
+    print_line("\t ",'\xcd','\xcd','\xcd',30);
     cout << "\t 4. Log Out\n";
-    cout << "\t \xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd \n";
-    cout << "\t 5. Exit \n";
-    cout << "\t \xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd \n";
-    cout << "\n   \xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\n";
+    print_line("\t ",'\xcd','\xcd','\xcd',30);
+    cout << "\t 5. Exit \n"; 
+    print_line("\t ",'\xcd','\xcd','\xcd',30);
+
+    print_line("\n   ",'\xcd','\xcd','\xcd',43);
 
     cout << "   Option : ";
 
     int option;
     cin >> option;
 
-    if (option == 1)
-    { // Book Flight Ticket
+    if (option == 1)// Book Flight Ticket
+    { 
         system("cls");
         Book_Flight_Ticket();
     }
-    else if (option == 2)
-    { // Cancel Ticket/Reservation
+    else if (option == 2)// Cancel Ticket/Reservation
+    { 
         system("cls");
         Cancel_Ticket();
         main_menu();
     }
-    else if (option == 3)
-    { // My Booking
+    else if (option == 3)// My Booking
+    { 
         My_Bookings();
         main_menu();
     }
-    else if (option == 4)
-    { // logout karne le liye
+    else if (option == 4)// logout karne le liye
+    { 
         login_status = false;
         cout << "\n\t\x1B[32m--Logout Successfull--\033[0m\t\t\n";
         Sleep(2000);
         system("cls");
         login_menu();
     }
-    else if (option == 5)
-    { // Exit
-        system("cls");
-        cout << "\n\n\n\n\n\n\t\t\t\033[1;47;35m                                                  \033[0m\t\t\n";
-        cout << "\t\t\t\033[1;47;35m--------------  THANKYOU FOR VISITING  -----------\033[0m\t\t\n";
-        cout << "\t\t\t\033[1;47;35m                           ~nishant_ujjwal airline\033[0m\t\t\n\n\n\n\n\n\n";
-        exit(0);
+    else if (option == 5)// Exit
+    { 
+        Exit_msg();
     }
     else
     {
-        cout << "\n\t\t\x1B[31mInvalid Input!!\033[0m\t\t";
+        cout << "\n\t\t\x1B[31m Invalid Input!! \033[0m\t\t";
         Sleep(1300);
         system("cls");
         main_menu();
@@ -1770,36 +1807,27 @@ void details()
 
 void login_menu()
 {
-    // cout << "\n   \xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\n";
     print_line("\n   ",'\xcd','\xcd','\xcd',43);
     cout << "\t    AIRLINE RESERVATION SYSTEM\n";
-    // cout << "   \xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\n\n";
     print_line("   ",'\xcd','\xcd','\xcd',43,"\n\n");
-    // cout << "   \xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd LOGIN OPTIONS \xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\n\n";
+
     print_line("   ",'\xcd','\xcd','\xcd',13," "); cout<<"LOGIN OPTIONS";  print_line(" ",'\xcd','\xcd','\xcd',13,"\n\n");
 
-    // cout << "\t \xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd \n";
     print_line("\t ",'\xcd','\xcd','\xcd',28);
     cout << "\t 1. Login\n";
-    // cout << "\t \xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd \n";
     print_line("\t ",'\xcd','\xcd','\xcd',28);
     cout << "\t 2. Sign Up \n ";
-    // cout << "\t \xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd \n";
     print_line("\t ",'\xcd','\xcd','\xcd',28);
     cout << "\t 3. Flight Announcements \n";
-    // cout << "\t \xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd \n";
     print_line("\t ",'\xcd','\xcd','\xcd',28);
     cout << "\t 4. Details \n";
-    // cout << "\t \xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd \n";
     print_line("\t ",'\xcd','\xcd','\xcd',28);
     cout << "\t 5. Login as Administrator\n";
-    // cout << "\t \xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd \n";
+
     print_line("\t ",'\xcd','\xcd','\xcd',28);
-    cout << "\t 6. Exit\n";
-    // cout << "\t \xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd \n";
-    print_line("\t ",'\xcd','\xcd','\xcd',28);
+    cout << "\t 6. Exit\n";print_line("\t ",'\xcd','\xcd','\xcd',28);
     
-     print_line("\n   ",'\xcd','\xcd','\xcd',43);
+    print_line("\n   ",'\xcd','\xcd','\xcd',43);
 
     if (signup_ok)
     {
@@ -1843,12 +1871,9 @@ void login_menu()
         }
     }
     else if (option == 6)
-    {
+    {   
         system("cls");
-        cout << "\n\n\n\n\n\n\t\t\t\033[1;47;35m                                                  \033[0m\t\t\n";
-        cout << "\t\t\t\033[1;47;35m--------------  THANKYOU FOR VISITING  -----------\033[0m\t\t\n";
-        cout << "\t\t\t\033[1;47;35m                           ~nishant_ujjwal airline\033[0m\t\t\n\n\n\n\n\n\n";
-        exit(0);
+        Exit_msg();
     }
     else
     {
@@ -1865,7 +1890,8 @@ int main()
     // welcome();
     // welcome_animation();
     login_menu();
-    // My_Bookings();
+    main_menu();
+    My_Bookings();
 
     return 0;
 }
