@@ -1862,9 +1862,9 @@ void login_menu()
 int main()
 {
     system("cls");
-    welcome();
-    welcome_animation();
-    // login_menu();
+    // welcome();
+    // welcome_animation();
+    login_menu();
     // My_Bookings();
 
     return 0;
