@@ -1,5 +1,9 @@
 # Flight Reservation System
-This is a C++ project that implements a simple Flight Reservation System. The system allows users to book flights, view flight details, check availability, cancel bookings, and manage flight schedules. It can be used by both administrators (to manage the flight system) and passengers (to book and manage their reservations).
+This is a C++ project that implements a simple Flight Reservation/Booking System. The system allows users to book flights, view flight details, check availability, cancel bookings, view My bookings and manage flight schedules. It can be used by both administrators (to manage the flight system) and passengers (to book and manage their reservations).
+This project has 2040+ line's code in main file📂. 
+
+# Usage
+Upon running the system, the user can choose whether to log in as a Passenger or Admin.
 
 # Features
 ### User Features 
@@ -7,13 +11,15 @@ This is a C++ project that implements a simple Flight Reservation System. The sy
 - View Booking Details : Users can view the details of their flight bookings.
 - Cancel Bookings : Users can cancel their reservations if needed.
 - View Available Flights : Users can check all available flights based on specific criteria (e.g., date, destination).
-- Passenger Information : Users can update their details and view their booking history.
+- View Detail's : user can view All details of Airline's  (e.g., Helpline no., General details, etc.)
+- flight Announcement : Users can see their details and view their flight Announcement's.
 ### Admin Features 
-- Add New Flights : Admins can add new flights with details like flight number, destination, date, time, and available seats.
+- Add New Flights : Admins can add new flights with details like flight number, destination, date, time, filght Fare and available seats, etc...
+- View All Flights : Admin can views all Flight's its Available.
 - View All Bookings : Admins can view all reservations made by passengers.
 - Update or Remove Flights: Admins can modify flight details or remove flights that are no longer available.
 - Manage Flight Schedules: Admins can update flight schedules, including delays and cancellations.
-- Generate Flight Reports: Admins can generate reports of all flight bookings and reservations.
+- Add Flight Announcement : Admins can Add reports/Announcement of all flight bookings and reservations.
 ### Technologies Used 
 - C++
 - File Handling : The project uses file handling to store and retrieve flight and booking details.
@@ -22,20 +28,18 @@ This is a C++ project that implements a simple Flight Reservation System. The sy
 # Project Structure
 ```
 Flight-Reservation-System/
-│
-├── main.cpp          # The main entry point of the project
-├── Flight.h          # Flight class header file
-├── Flight.cpp        # Flight class implementation
-├── Passenger.h       # Passenger class header file
-├── Passenger.cpp     # Passenger class implementation
-├── Admin.h           # Admin class header file
-├── Admin.cpp         # Admin class implementation
-├── Booking.h         # Booking class header file
-├── Booking.cpp       # Booking class implementation
-├── README.md         # This file
-└── data/
-    ├── flights.txt    # File to store flight details
-    └── bookings.txt   # File to store passenger bookings
+│                            (.dat files are binary files formats)
+├── README.md                 # This file is takes all details of this projects first read this file
+├── main.cpp                  # The main entry point of the project
+├── Flight.dat                # This File is the binary file can store All flight Details 
+├── passenger.dat             # This file can store all passenger details
+├── reservation.dat           # This file can store Reservation's details with all passengers in vectors forms  
+├── admin_login_detail.txt    # Admin login details username and passwords file
+├── login_detail.txt          # user details (username, passwords, name, mob no., etc.)
+├── flight_announcement.txt   # Flight announcement file take 📢 announcement of the flight or airline's 
+└── AnimationFiles/
+    ├── a1.txt, a2.txt,.....  # This files can store all animations files in the text form
+    └── welcometext.txt       # This is first welcome file 
 ```
 
 # Installation
@@ -50,22 +54,10 @@ git clone https://github.com/NishantSingh825/Flight-Booking-System-project-in-cp
 **3. Navigate to the project directory :**
 ```
 cd flight-reservation-system
-```
-# Usage
-Upon running the system, the user can choose whether to log in as a Passenger or Admin.
-
-### **For Passengers :**
-- Book Flight: Enter your details, select the flight, and confirm the booking.
-- View Flights: Browse all available flights based on your preferences.
-- Cancel Flight: Enter your booking ID and cancel your flight if necessary.
-### **For Admins:**
-- Add New Flight: Add new flight information (flight number, destination, time, seats available).
-- View Bookings: Check all the current reservations and manage passengers.
-- Manage Flights: Update flight schedules, cancel flights, or modify flight information.
-- Generate Reports: Generate booking reports for business analysis.
-
+``` 
 # Contributing
   If you'd like to contribute to this project, please fork the repository and create a pull request with your changes.
 
 # Thank you 
+
   
