@@ -1,2 +1,0 @@
-AA101 New York Los Angeles 150 149
-John Doe 30 P1234567
