@@ -55,7 +55,7 @@ git clone https://github.com/NishantSingh825/Flight-Booking-System-project-in-cp
 ```
 cd flight-reservation-system
 ``` 
-# Contributing
+# Contributing ✅
   If you'd like to contribute to this project, please fork the repository and create a pull request with your changes.
 
 # Thank you 💕
