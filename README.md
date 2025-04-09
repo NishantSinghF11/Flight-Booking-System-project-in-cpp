@@ -1,63 +1,156 @@
-# Flight Reservation System
-This is a C++ project that implements a simple Flight Reservation/Booking System. The system allows users to book flights, view flight details, check availability, cancel bookings, view My bookings and manage flight schedules. It can be used by both administrators (to manage the flight system) and passengers (to book and manage their reservations).
-This project has 2040+ line's code in main file📂. 
 
-# Usage
-Upon running the system, the user can choose whether to log in as a Passenger or Admin.
+# ✈️ Flight Reservation System in C++
 
-# Features
-### User Features 
-- Flight Booking : Users can search for available flights and book seats.
-- View Booking Details : Users can view the details of their flight bookings.
-- Cancel Bookings : Users can cancel their reservations if needed.
-- View Available Flights : Users can check all available flights based on specific criteria (e.g., date, destination).
-- View Detail's : user can view All details of Airline's  (e.g., Helpline no., General details, etc.)
-- flight Announcement : Users can see their details and view their flight Announcement's.
-### Admin Features 
-- Add New Flights : Admins can add new flights with details like flight number, destination, date, time, filght Fare and available seats, etc...
-- View All Flights : Admin can views all Flight's its Available.
-- View All Bookings : Admins can view all reservations made by passengers.
-- Update or Remove Flights: Admins can modify flight details or remove flights that are no longer available.
-- Manage Flight Schedules: Admins can update flight schedules, including delays and cancellations.
-- Add Flight Announcement : Admins can Add reports/Announcement of all flight bookings and reservations.
-### Technologies Used 
-- C++
-- File Handling : The project uses file handling to store and retrieve flight and booking details.
-- Object-Oriented Programming (OOP) : principles like classes and inheritance are used to model the system.
+![GitHub repo size](https://img.shields.io/github/repo-size/NishantSingh825/Flight-Booking-System-project-in-cpp)
+![GitHub last commit](https://img.shields.io/github/last-commit/NishantSingh825/Flight-Booking-System-project-in-cpp)
+![Made with C++](https://img.shields.io/badge/Made%20with-C++-blue)
+![Contributions welcome](https://img.shields.io/badge/Contributions-Welcome-brightgreen)
 
-# Project Structure
+> A complete terminal-based flight booking system built in C++ using file handling and object-oriented programming.
+> 
+> This is a C++ project that implements a simple Flight Reservation/Booking System. The system allows users to book flights, view flight details, check availability, cancel bookings, view My bookings and manage flight schedules. It can be used by both administrators (to manage the flight system) and passengers (to book and manage their reservations). This project has 2040+ line's code in main file📂.
+
+---
+
+## 🎥 Demo
+
+>
+
+---
+
+## 📌 Overview
+
+This C++ project is a **Flight Reservation System** that allows users to:
+- Book and cancel flight tickets 🧳
+- View flight schedules 🛫
+- Manage reservations ✍️
+- And much more!
+
+It supports two roles:
+- 👤 **Passenger** – Book and manage your flights.
+- 🔧 **Admin** – Add, update, and manage flight schedules.
+
+💻 With **2040+ lines of C++ code**, this is a robust, real-world project showcasing file handling, OOP, and system design.
+
+---
+
+## 🧭 Features
+
+### 👥 For Passengers
+- 🔍 **Search & Book Flights** based on date, route, and availability.
+- 🧾 **View Booking Details** – Know your flight number, timing, and seat.
+- ❌ **Cancel Bookings** if your plans change.
+- 📋 **View Available Flights** by date or destination.
+- 📝 **Read Airline Details** – Helpline, policies, general info.
+- 📢 **Flight Announcements** – Get updates and notices related to your journey.
+
+### 🔐 For Admins
+- ➕ **Add New Flights** with all relevant details.
+- 🧾 **View All Flights** currently available.
+- 📁 **View All Bookings** made by users.
+- ✏️ **Update or Remove Flights** based on availability.
+- 📅 **Manage Flight Schedules** – handle delays, rescheduling, or cancellations.
+- 📣 **Add Announcements** for flights, delays, or offers.
+
+---
+
+## 🛠 Technologies Used
+
+- **C++** – Core logic and implementation
+- **File Handling (Binary & Text)** – Persistent data storage
+- **Object-Oriented Programming** – Classes, Inheritance, Encapsulation
+- **Terminal Interface** – Simple yet interactive console UI
+- **Text-based Animations** – Added for better user experience 🎞️
+
+---
+
+## 🗂 Project Structure
+
 ```
 Flight-Reservation-System/
-│                            (.dat files are binary files formats)
-├── README.md                 # This file is takes all details of this projects first read this file
-├── main.cpp                  # The main entry point of the project
-├── Flight.dat                # This File is the binary file can store All flight Details 
-├── passenger.dat             # This file can store all passenger details
-├── reservation.dat           # This file can store Reservation's details with all passengers in vectors forms  
-├── admin_login_detail.txt    # Admin login details username and passwords file
-├── login_detail.txt          # user details (username, passwords, name, mob no., etc.)
-├── flight_announcement.txt   # Flight announcement file take 📢 announcement of the flight or airline's 
+│
+├── README.md                  # 📘 Project documentation
+├── main.cpp                   # 🎯 Main program file (2040+ lines)
+├── Flight.dat                 # ✈️ Binary file storing flight data
+├── passenger.dat              # 👤 Binary file storing passenger data
+├── reservation.dat            # 🧾 Booking/reservation data
+├── admin_login_detail.txt     # 🔐 Admin credentials
+├── login_detail.txt           # 🔐 Passenger credentials
+├── flight_announcement.txt    # 📣 Announcements made by admin
 └── AnimationFiles/
-    ├── a1.txt, a2.txt,.....  # This files can store all animations files in the text form
-    └── welcometext.txt       # This is first welcome file 
+    ├── a1.txt, a2.txt, ...    # 🎬 Text-based animation files
+    └── welcometext.txt        # 🎉 Welcome screen
 ```
 
-# Installation
-**1 . Create environment :**
-```
+---
+
+## ⚙️ Installation
+
+### 1️⃣ Create Environment
+```bash
 git init
 ```
-**2 . Clone the repository :**
-```
+
+### 2️⃣ Clone the Repository
+```bash
 git clone https://github.com/NishantSingh825/Flight-Booking-System-project-in-cpp.git
 ```
-**3. Navigate to the project directory :**
+
+### 3️⃣ Navigate to Project Directory
+```bash
+cd Flight-Booking-System-project-in-cpp
 ```
-cd flight-reservation-system
-``` 
-# Contributing ✅
-  If you'd like to contribute to this project, please fork the repository and create a pull request with your changes.
 
-# Thank you 💕
+### 4️⃣ Compile the Code
+```bash
+g++ main.cpp -o flight_system
+```
 
-  
+### 5️⃣ Run the Program
+```bash
+./flight_system
+```
+
+---
+
+## 📌 Future Improvements (Ideas 💡)
+- GUI Integration using Qt or C++/CLI
+- Database integration (MySQL/SQLite)
+- Online booking support with user authentication
+- E-ticket generation in PDF format
+- Real-time flight tracking integration
+
+---
+
+## 🤝 Contributing
+
+Contributions are what make the open-source community such an amazing place to learn and grow.  
+Feel free to fork the project and submit a Pull Request! 🛠️
+
+```bash
+# Steps
+1. Fork the repository
+2. Create your branch: git checkout -b feature/YourFeature
+3. Commit your changes: git commit -m "Add YourFeature"
+4. Push to the branch: git push origin feature/YourFeature
+5. Open a Pull Request ✅
+```
+
+---
+
+## 💬 Connect With Me
+
+Feel free to connect if you have any questions or ideas!
+
+- 📧 Email: [nishantsinghf11@gmail.com](mailto:nishantsinghf11@gmail.com)
+- 🧠 GitHub: [NishantSingh825](https://github.com/NishantSingh825)
+- 💼 LinkedIn: [Nishant Singh](https://www.linkedin.com/in/nishantsinghf11)
+
+---
+
+## 🙏 Thank You!
+
+Thanks for visiting this repository 💕  
+If you liked this project, don’t forget to give it a ⭐ on GitHub!
+
+---
