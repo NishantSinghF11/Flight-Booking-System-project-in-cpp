@@ -102,6 +102,10 @@ public:
     {
         flight_price = p;
     }
+    void update_seats(float s)
+    {
+        availableSeats = s;
+    }
 
     int get_available_Seats()
     {
@@ -729,7 +733,6 @@ void Display_All_Flight(int conti = 0)
     }
 }
 
-
 void Update_flight_Detail()
 {
     system("cls");
@@ -772,7 +775,8 @@ void Update_flight_Detail()
                 cout << "3. Update Departure Time\n";
                 cout << "4. Update Arrival Time\n";
                 cout << "5. Update Flight Fare\n";
-                cout << "6. Go Back\n";
+                cout << "6. Update Available Seats\n";
+                cout << "7. Go Back\n";
 
                 int choice;
                 cin >> choice;
@@ -868,6 +872,30 @@ void Update_flight_Detail()
                     return;
                 }
                 else if (choice == 6)
+                {
+                    cout << "\nPlease Enter the new number of Available Seats: ";
+                    int new_available_seats;
+                    cin >> new_available_seats;
+                    if (new_available_seats < 0 || new_available_seats > f1.get_totalSeats())
+                    {
+                        cout << "\n\x1B[31mInvalid number of seats! It must be between 0 and " << f1.get_totalSeats() << ".\033[0m\n";
+                        Sleep(1300);
+                        system("cls");
+                        continue;
+                    }
+                    f1.update_seats(new_available_seats);
+                    file.seekp(-static_cast<int>(sizeof(f1)), ios::cur);
+                    file.write((char *)&f1, sizeof(f1));
+                    cout << "\n\x1B[32m Available Seats updated successfully to :\033[0m" << new_available_seats << "\n";
+                    cout << "\033[1;47;35m Updated Flight :\033[0m\t\t\n";
+                    f1.display_flight();
+                    file.close();
+                    cout << "\n\nPress any key to continue ... " << endl;
+                    getch();
+                    system("cls");
+                    return;
+                }
+                else if (choice == 7)
                 {
                     file.close();
                     system("cls");
@@ -1612,17 +1640,16 @@ bool My_Bookings(int dis = 0)
 
     bool ticket_found = false;
 
-
     while (file.peek() != EOF)
     {
-        
+
         R1.readfromfile_rev(file);
         ticket_found = true;
         int trip = R1.get_trip();
         vector<Passenger> pass_obj = R1.get_pass_vector();
-        
+
         int is_special_fare = pass_obj[1].get_special_fare();
-        
+
         float fare = R1.get_fare();
 
         string get_departure = R1.get_departure();
@@ -1747,14 +1774,13 @@ void Cancel_Ticket()
             if (R1.get_flight_no() == flight_number && R1.get_flight_date() == date)
             {
                 found = true;
-                if (one == 1)//only ones time run
-                {   
+                if (one == 1) // only ones time run
+                {
                     // R1.readfromfile_rev(infile);
                     no_of_passenger = R1.get_no_of_passenger();
-                    cout<<"NO. of passenger: "<<no_of_passenger<<"\n";
+                    cout << "NO. of passenger: " << no_of_passenger << "\n";
                     one = 0;
                 }
-                
             }
             else
             {
@@ -1764,7 +1790,7 @@ void Cancel_Ticket()
 
         Temp.close();
         infile.close();
-        
+
         if (found)
         {
             remove("reservation.dat");
@@ -2035,10 +2061,10 @@ void login_menu()
 int main()
 {
     system("cls");
-    // welcome();
-    // welcome_animation();
+    welcome();
+    welcome_animation();
     login_menu();
-    // My_Bookings();
+    
 
     return 0;
 }

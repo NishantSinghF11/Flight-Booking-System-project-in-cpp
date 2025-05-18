@@ -1,2 +1,1 @@
-Nishant admin
-1 1
+admin admin
