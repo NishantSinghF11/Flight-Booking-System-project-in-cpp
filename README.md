@@ -143,7 +143,7 @@ Feel free to fork the project and submit a Pull Request! 🛠️
 Feel free to connect if you have any questions or ideas!
 
 - 📧 Email: [nishantsinghf11@gmail.com](mailto:nishantsinghf11@gmail.com)
-- 🧠 GitHub: [NishantSingh825](https://github.com/NishantSingh825)
+- 🧠 GitHub: [NishantSinghF11](https://github.com/NishantSinghF11)
 - 💼 LinkedIn: [Nishant Singh](https://www.linkedin.com/in/nishantsinghf11)
 
 ---
